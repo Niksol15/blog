@@ -1,0 +1,24 @@
+{{- if (.Param "ShowBreadCrumbs") -}}
+<div class="breadcrumbs">
+    {{- $url := replace .Parent.Permalink (printf "%s" site.Home.Permalink) "" }}
+    {{- $lang_url := strings.TrimPrefix (printf "%s/" .Lang) $url -}}
+
+    <a href="{{ "" | absLangURL }}">{{ i18n "home" | default "Home" }}</a>
+    {{- $scratch := newScratch }}
+    {{- range $index, $element := split $lang_url "/" }}
+
+    {{- $scratch.Add "path" (printf "%s/" $element )}}
+    {{- $path := $scratch.Get "path" -}}
+
+    {{- /* Skip the "posts" section path to avoid ambiguity in multilingual setup */ -}}
+    {{- if ne $element "posts" -}}
+      {{- $bc_pg := site.GetPage $path -}}
+
+      {{- if (and ($bc_pg) (gt (len . ) 0))}}
+      {{- print "&nbsp;»&nbsp;" | safeHTML -}}<a href="{{ $bc_pg.Permalink }}">{{ $bc_pg.Name }}</a>
+      {{- end }}
+    {{- end -}}
+
+    {{- end -}}
+</div>
+{{- end -}}

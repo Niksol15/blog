@@ -1,0 +1,63 @@
+{{- /* PaperMod override to add Giscus comments */ -}}
+{{ if .Site.Params.giscus.enable }}
+<div class="giscus-comments" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+  <script>
+    // Determine current theme from PaperMod (uses data-theme on documentElement)
+    function getGiscusTheme() {
+      const theme = document.documentElement.getAttribute('data-theme');
+      if (theme === 'dark') return 'dark';
+      if (theme === 'light') return 'light';
+      // Auto mode - check system preference
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // Load Giscus with current theme
+    function loadGiscus() {
+      const script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.setAttribute('data-repo', '{{ .Site.Params.giscus.repo }}');
+      script.setAttribute('data-repo-id', '{{ .Site.Params.giscus.repoId }}');
+      script.setAttribute('data-category', '{{ .Site.Params.giscus.category }}');
+      script.setAttribute('data-category-id', '{{ .Site.Params.giscus.categoryId }}');
+      script.setAttribute('data-mapping', '{{ .Site.Params.giscus.mapping }}');
+      script.setAttribute('data-strict', '0');
+      script.setAttribute('data-reactions-enabled', '{{ .Site.Params.giscus.reactionsEnabled }}');
+      script.setAttribute('data-emit-metadata', '{{ .Site.Params.giscus.emitMetadata }}');
+      script.setAttribute('data-input-position', 'top');
+      script.setAttribute('data-theme', getGiscusTheme());
+      script.setAttribute('data-lang', '{{ .Lang }}');
+      script.setAttribute('crossorigin', 'anonymous');
+      script.async = true;
+      document.querySelector('.giscus-comments').appendChild(script);
+    }
+
+    // Update Giscus theme
+    function updateGiscusTheme() {
+      const theme = getGiscusTheme();
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (iframe) {
+        iframe.contentWindow.postMessage(
+          { giscus: { setConfig: { theme: theme } } },
+          'https://giscus.app'
+        );
+      }
+    }
+
+    // Watch for theme changes on documentElement (PaperMod uses data-theme attribute)
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-theme') {
+          updateGiscusTheme();
+        }
+      });
+    });
+    observer.observe(document.documentElement, { attributes: true });
+
+    // Also watch for system preference changes in auto mode
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateGiscusTheme);
+
+    // Load Giscus on page load
+    loadGiscus();
+  </script>
+</div>
+{{ end }}

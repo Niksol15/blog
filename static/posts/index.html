@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <meta name="robots" content="noindex">
+    <script>
+        // Detect preferred language and redirect
+        var lang = navigator.language || navigator.userLanguage;
+        var targetLang = lang.startsWith('uk') ? 'uk' : 'en';
+        var targetUrl = '/blog/' + targetLang + '/posts/';
+        window.location.replace(targetUrl);
+    </script>
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=/blog/en/posts/">
+    </noscript>
+</head>
+<body>
+    <p>Redirecting to <a href="/blog/en/posts/">posts</a>...</p>
+</body>
+</html>

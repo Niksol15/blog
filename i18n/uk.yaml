@@ -1,0 +1,48 @@
+# Ukrainian translations for PaperMod theme
+# Overrides and extends the default PaperMod Ukrainian translations
+
+- id: prev_page
+  translation: "Попередня"
+
+- id: next_page
+  translation: "Наступна"
+
+- id: read_time
+  translation:
+    one : "1 хвилина"
+    other: "{{ .Count }} хвилин"
+
+- id: words
+  translation:
+    one : "слово"
+    other: "{{ .Count }} слів"
+
+- id: toc
+  translation: "Зміст"
+
+- id: translations
+  translation: "Переклади"
+
+- id: home
+  translation: "Головна"
+
+- id: edit_post
+  translation: "Редагувати"
+
+- id: code_copy
+  translation: "копіювати"
+
+- id: code_copied
+  translation: "скопійовано!"
+
+- id: read_more
+  translation: "Читати далі"
+
+- id: share_on
+  translation: "Поділитися:"
+
+- id: posted_on
+  translation: "Опубліковано"
+
+- id: min_read
+  translation: "хв читання"

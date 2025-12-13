@@ -1,0 +1,7 @@
+{{- /* Extended head section for better SEO */ -}}
+
+{{- /* Preconnect to external domains for better performance */ -}}
+<link rel="preconnect" href="https://giscus.app" crossorigin>
+{{ if .Site.Params.seo.googleAnalytics }}
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+{{ end }}
