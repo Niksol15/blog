@@ -63,7 +63,8 @@ enableGitInfo = true
 
 # Site params
 [params]
-  author = "Nikita Solonko"
+  # author is intentionally not set here to hide it from post metadata
+  # (single-author blog, author info is on About page)
   description = "Tech blog about C++, systems programming and development"
   images = ["favicon.svg"]  # Default Open Graph image
 

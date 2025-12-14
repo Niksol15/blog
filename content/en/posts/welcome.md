@@ -1,24 +1,16 @@
 ---
-title: "Welcome to My Tech Blog"
-date: 2024-12-13T23:24:16+02:00
-tags: ["meta", "introduction"]
-description: "Introduction to my technical blog about C++, systems programming, and software development"
+title: "First post"
+date: 2025-12-14
+description: "What this blog is about and why I started it"
 draft: false
 ---
 
-Welcome to my technical blog! This is a space where I share insights, tutorials, and thoughts about C++, systems programming, and software development.
+So, the blog is live.
 
-## What You'll Find Here
+I've been meaning to start writing for a while, but kept putting it off — no time, nothing interesting to say, the usual excuses. At some point I realized: if I wait for the perfect moment, it's never going to come.
 
-- **Deep dives into C++** - Exploring modern C++ features, best practices, and performance optimization
-- **Systems Programming** - Low-level programming, performance analysis, and architectural decisions
-- **Practical Tutorials** - Real-world examples and hands-on guides
-- **Tools & Workflow** - Development tools, debugging techniques, and productivity tips
+I plan to write about what I work with and interesting things I learn along the way: C++, performance, concurrency, tooling, some CS theory. There won't be a regular schedule — I'd rather post less frequently but with something actually useful than churn out weekly filler.
 
-## About This Blog
+I also want to write about my experience with OMSCS (Georgia Tech's online Master's program) — it's a program worth knowing about.
 
-This blog is built with [Hugo](https://gohugo.io/) and the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme. It's available in both English and Ukrainian, and features dark/light mode, comments via Giscus, and full-text search.
-
-The source code is [open source on GitHub](https://github.com/Niksol15/blog).
-
-Stay tuned for more content!
+Let's see how it goes.

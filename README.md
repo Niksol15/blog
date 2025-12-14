@@ -6,13 +6,12 @@ A bilingual technical blog about C++, systems programming, and software developm
 
 - **Modern Theme** - Built with [PaperMod](https://github.com/adityatelange/hugo-PaperMod)
 - **Bilingual Support** - English and Ukrainian with language switcher
-- **Dark/Light Mode** - Theme toggle
-- **Comments** - Giscus integration (GitHub Discussions-based)
-- **Search** - Fast client-side search powered by Fuse.js
-- **Reading Experience** - Reading time, table of contents, syntax highlighting with copy button, post navigation
+- **Dark/Light Mode** - Theme toggle with preference persistence
+- **Comments** - Giscus integration (GitHub Discussions-based) with theme sync
+- **Reading Experience** - Reading time, table of contents, syntax highlighting with copy button, breadcrumbs, post navigation
 - **Social Sharing** - Twitter/X, LinkedIn, Telegram
-- **SEO Optimized** - Structured data, Open Graph, Twitter Cards
-- **RSS Feeds** - Subscribe to updates
+- **SEO Optimized** - JSON-LD structured data, Open Graph, Twitter Cards
+- **RSS Feeds** - Per-language feeds (`/en/feed.xml`, `/uk/feed.xml`)
 
 ## Prerequisites
 
@@ -48,10 +47,10 @@ hugo --gc --minify
 
 ```bash
 # English
-hugo new posts/my-post.md
+hugo new content/en/posts/my-post.md
 
 # Ukrainian
-hugo new uk/posts/my-post.md
+hugo new content/uk/posts/my-post.md
 ```
 
 ## Configuration

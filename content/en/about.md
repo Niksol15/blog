@@ -1,27 +1,21 @@
 ---
 title: "About"
-description: "Senior C++ Engineer, Chernihiv"
+ShowToc: false
 ---
 
-# Hey there! 👋
+Hey, I'm Nikita Solonko — a C++ developer based in Chernihiv, Ukraine.
 
-I'm **Nikita Solonko**, a Senior C++ Engineer at [GlobalLogic](https://www.globallogic.com/), based in Chernihiv, Ukraine.
+Currently working at Atto Trading on low-latency HFT platform development.
+Before that, I spent three and a half years at GlobalLogic building safety-critical automotive middleware for Volvo/Polestar.
 
-## What I do
+I'm also pursuing a Master's online at Georgia Tech (OMSCS).
+Got my Bachelor's from Taras Shevchenko National University of Kyiv, Faculty of Computer Science and Cybernetics.
+My thesis was on elliptic curve cryptography.
+I have Stanford certificates in compilers and cryptography — I like deepening my CS foundations when time allows.
 
-- Systems programming in C++
-- High-performance application development
-- Qt/QML for desktop interfaces
-- Machine Learning (hobby projects)
+## What this blog is about
 
-## This blog
-
-Here I share my experience and knowledge:
-
-- Deep dives into C++ features
-- Practical tutorials
-- Architecture decisions
-- Tools and workflow
+This blog is an attempt to organize my knowledge and experience through creating content. I started it because I wanted to contribute more content on low-level C++, systems programming, and computer architecture. I also write about my OMSCS experience.
 
 ## Contact
 
@@ -30,4 +24,4 @@ Here I share my experience and knowledge:
 
 ---
 
-This blog's code is [open source](https://github.com/Niksol15/blog).
+Blog source code is [on GitHub](https://github.com/Niksol15/blog).
