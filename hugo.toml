@@ -52,6 +52,9 @@ enableGitInfo = true
     contentDir = "content/en"
     [languages.en.params]
       description = "Tech blog about C++, systems programming and development"
+      [languages.en.params.homeInfoParams]
+        Title = "Nikita Solonko"
+        Content = "C++ Enthusiast | Tech blog about C++, systems programming and development"
 
   [languages.uk]
     languageName = "Українська"
@@ -60,6 +63,9 @@ enableGitInfo = true
     contentDir = "content/uk"
     [languages.uk.params]
       description = "Технічний блог про C++, системне програмування та розробку"
+      [languages.uk.params.homeInfoParams]
+        Title = "Nikita Solonko"
+        Content = "C++ Ентузіаст | Технічний блог про C++, системне програмування та розробку"
 
 # Site params
 [params]
@@ -100,9 +106,7 @@ enableGitInfo = true
     enabled = false
 
   # PaperMod home info mode
-  [params.homeInfoParams]
-    Title = "Nikita Solonko"
-    Content = "Senior C++ Engineer | Tech blog about C++, systems programming and development"
+  # Note: homeInfoParams is now configured per-language in [languages.*.params.homeInfoParams]
 
   # Social icons
   [[params.socialIcons]]
