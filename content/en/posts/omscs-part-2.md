@@ -22,7 +22,7 @@ Quick reminder of [what you need for OMSCS admission](https://omscs.gatech.edu/a
 
 ## Timeline
 
-The key thing to know - you need to apply way in advance. I was applying for Fall 2024 semester (starts end of August). The application [deadline](https://omscs.gatech.edu/deadlines-decisions-requirements-and-guidelines) was March 1st of the same year. If you're applying for Spring semester (starts early January), the deadline is August 15th of the previous year. You can't start in summer, so keep that in mind.
+The key thing to know is that you need to apply way in advance. I was applying for Fall 2024 semester (starts end of August). The application [deadline](https://omscs.gatech.edu/deadlines-decisions-requirements-and-guidelines) was March 1st of the same year. If you're applying for Spring semester (starts early January), the deadline is August 15th of the previous year. You can't start in summer, so keep that in mind.
 
 ## IELTS
 
@@ -46,7 +46,7 @@ Knowing I had nearly 9 months until the deadline, I decided to chill for a coupl
 
 I decided to first improve my general English level, then specifically prep for TOEFL/IELTS. Honestly, this doesn't make much sense - if you're in this situation, just start prepping for the exam while improving your level at the same time.
 
-I picked [First Cambridge Center](https://cambridge.ua/uk/company/) (not an ad). They assessed my English level at B1+/B2-. I immediately said I needed grammar and wanted individual lessons. Despite this, they first tried to sell me group classes that are more profitable for any online school. I still went to one free trial session. Obviously It didn't work for me, as group format is better for people who need conversation practice, not for quickly leveling up grammar.
+I picked [First Cambridge Center](https://cambridge.ua/uk/company/) (not an ad). They assessed my English level at B1+/B2-. I immediately said I needed grammar and wanted individual lessons. Despite this, they first tried to sell me group classes that are more profitable for any online school. I still went to one free trial session. Obviously, it didn't work for me, as group format is better for people who need conversation practice, not for quickly leveling up grammar.
 
 After that I took individual lessons. My review: teachers work from pre-made presentations developed by the school, which limits personalization. Nevertheless, teachers are nice and have solid language knowledge. The IELTS prep didn't really work out though.
 
@@ -111,7 +111,7 @@ Three parts, 11-14 minutes total:
 
 If you think having good conversational English means you'll definitely score high, then you're wrong. Not only do you need to speak grammatically correct, you also need advanced vocabulary and grammar constructions you wouldn't normally use in conversation.
 
-However, that's not even the main challenge. The main challenge is squeezing out maximum information. For example, if in part 1 they ask a simple question like "what's your favorite food", you can't just say "Borscht" or "My favorite food is borscht". You need to come up with 2 sentences on spot, ideally using some perfect tense. But keep in mind that if you ramble off topic, they'll deduct points for that too.
+However, that's not even the main challenge. The main challenge is squeezing out maximum information. For example, if in part 1 they ask a simple question like "what's your favorite food", you can't just say "Borscht" or "My favorite food is borscht". You need to come up with 2 sentences on the spot, ideally using some perfect tense. But keep in mind that if you ramble off topic, they'll deduct points for that too.
 
 To illustrate: in part 2 they might ask what advice you recently received, but you might not have received any advice at all! Or you can be asked to describe a song you like. How do you even describe a song for 3 minutes? I was lucky, since I got something about environmental pollution, and you can talk about that forever. In part 2 your goal is for them to stop you, not to stop yourself.
 
@@ -121,7 +121,7 @@ This was the hardest section for me because I'm a straightforward person in conv
 
 Where to register? I used [British Council](https://takeielts.britishcouncil.org/). Registration includes access to a practice platform.
 
-On February 20th I took Speaking, 21st - everything else, 23rd - I already had the results. I recommend taking it early, because IELTS lets you retake individual sections for a fee, so it's better to take the test in advance to have time for retakes if needed. IELTS results valid for 2 years. Also note you need to register early too, as it might not be slots available.
+On February 20th I took Speaking, 21st - everything else, 23rd - I already had the results. I recommend taking it early, because IELTS lets you retake individual sections for a fee, so it's better to take the test in advance to have time for retakes if needed. IELTS results valid for 2 years. Also note you need to register early too, because there might not be any slots available.
 
 **Resources:**
 
@@ -175,7 +175,7 @@ You'll also need to briefly answer a couple bureaucratic and motivational questi
 
 Then you pay the application fee. When I applied it was $105. I had no problem paying with a Ukrainian bank card online.
 
-That's almost it! Then you wait to be "processed". Usually they send decisions to everyone around the same time, so you can monitor OMSCS Reddit - people will start posting about getting accepted. Then they'll tell you you're conditionally accepted, after which you need to confirm your Bachelor's degree by sending it to GaTech (described above).
+That's almost it! Then you wait to be "processed". Usually they send decisions to everyone around the same time, so you can monitor OMSCS Reddit - people will start posting about getting accepted. Then they'll tell you that you're conditionally accepted, after which you need to confirm your Bachelor's degree by sending it to GaTech (described above).
 
 If you have questions, there's an official email you can contact. They'll definitely respond, but be ready for it to take a while due to volume. You can also ask questions on Reddit to get "unofficial" answers from students and even university representatives.
 

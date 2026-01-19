@@ -21,19 +21,19 @@ Back in my freshman year, I stumbled upon an article about a Master's degree tha
 
 *Skip this section if you're not interested in the problems of Ukrainian higher education.*
 
-I got my CS Bachelor's at Taras Shevchenko National University of Kyiv. While I genuinely enjoyed studying in my first years, the later ones were a different story.
+I earned my CS Bachelor's degree at Taras Shevchenko National University of Kyiv. While I genuinely enjoyed studying in my first years, the later ones were a different story.
 
-Firstly, I started working on a really cool project at GlobalLogic in my second year. Having spent 3.5 years there, I went from trainee to the meme-worthy "21-year-old senior" (feel free to comment that 20-year-old seniors don't exist, title inflation is real, and you need at least 10 years of experience to be a true senior). The point is I could spend my time earning actual money instead of chasing grades for a $50/month scholarship.
+Firstly, I started working on a really cool project at GlobalLogic in my second year. Having spent 3.5 years there, I went from trainee to the meme-worthy "21-year-old senior" (feel free to comment that 20-year-old seniors don't exist, title inflation is real, and you need at least 10 years of experience to be a true senior). The point is that I could spend my time earning actual money instead of chasing grades for a $50/month scholarship.
 
 And this is super common. Motivated students start working almost from day one because everyone wants to earn money and gain industry experience now, not in 4 years.
 
-Secondly, as you progress, courses are becoming very specific, and you can't opt out. You learn what they give you, and everyone gets the same thing regardless of interests. Sure, there's "choice" - usually between two different names of the same course. At my faculty, the only real choice was picking a department in year 3, which affected maybe 1-3 courses per semester. Your options were:
+Secondly, as you progress, courses become very specialized, and you can't opt out. You learn what they give you, and everyone gets the same thing regardless of interests. Sure, there's "choice" - usually between two different names of the same course. At my faculty, the only real choice was picking a department in year 3, which affected maybe 1-3 courses per semester. Your options were:
 
 1. chill courses
 2. algorithms, ML, cryptography (my pick)
 3. web development, but in a classroom setting
 
-These two problems feed into each other. When you're forced to take a course you don't care about, there's zero motivation to push through - you just choose to spend time on your job. As a result, most knowledge the university offers just passes by most students (myself included).
+These two problems feed into each other. When you're forced to take a course you don't care about, there's zero motivation to push through - you just choose to spend time on your job. As a result, most knowledge the university offers just passes most students by (myself included).
 
 Don't get me wrong, I don't think my faculty was bad. I don't regret getting my Bachelor's there and would choose it again. Firstly, for the networking, as some of the smartest people I know studied there. Secondly, despite everything I described, occasionally there are genuinely interesting courses taught by brilliant professors. The only catch is noticing this before the final exam, when you're scraping by with a 60 because you skipped all the lectures.
 
@@ -89,7 +89,7 @@ There's a huge selection of [courses](https://omscs.gatech.edu/current-courses).
 
 The order matters too. In your first year, you need to pass 2 foundational courses (marked with an asterisk in the list) with at least a B. If you don't, you'll just be restricted in course selection until you meet this requirement.
 
-Additional details: an academic year has 3 semesters - Spring, Summer, Fall. You can't skip more than 2 consecutive semesters. You have 5 years to complete the program. Everyone recommends starting with 1 course per semester. As my experience showed that's solid advice.
+Additional details: an academic year has 3 semesters - Spring, Summer, Fall. You can't skip more than 2 consecutive semesters. You have 5 years to complete the program. Everyone recommends starting with 1 course per semester. In my experience, that’s solid advice.
 
 Hopefully I've sold you on the program, so let's talk about admission requirements. They're described [here](https://omscs.gatech.edu/admission-criteria).
 
