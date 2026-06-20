@@ -1,0 +1,109 @@
+// "All roads lead to write()" - how the ways of printing "Hello World" in C++
+// collapse, layer by layer, onto a single function and then one system call.
+//
+// Everything funnels through the libc write() wrapper: C++ iostream (streambuf)
+// and the diagnostics helpers go through C stdio (FILE*), which flushes via
+// write(); the other fd-based APIs (dprintf, aio_write, lio_listio) call write()
+// too. write() is a thin libc wrapper that emits the 'syscall' CPU instruction.
+// syscall(SYS_write) and inline asm are siblings of write() - same instruction,
+// they just skip the wrapper. Only four methods take their own syscall (writev,
+// sendfile, splice, io_uring).
+//
+// The destination is just write()'s first argument: stdout (1), stderr (2), a
+// regular file, /dev/tty, ... - a *target*, not a separate API. So /dev/tty is
+// not its own box: open()+write() to it is unbuffered, ofstream/fopen to it is
+// buffered - the buffering comes from the API, not the target.
+//
+// Plain .dot on purpose - no HTML-like labels. Labels use \n only, the font is
+// the generic "monospace" (so layout metrics match whatever monospace the
+// reader's browser falls back to), and the whole graph sits on a light card so
+// it stays readable on a dark *and* a light page theme.
+//
+// Build:  ./build-diagram.sh        (-> ../../static/images/hello-world-funnel.svg)
+digraph hello_to_write {
+    rankdir=TB;
+    bgcolor="#faf9f6";
+    nodesep=0.5;
+    ranksep=0.62;
+    newrank=true;
+    pad=0.3;
+    splines=true;
+
+    node [shape=box, style="rounded,filled", fontname="monospace",
+          fontsize=10, fontcolor="#1a1a1a", penwidth=1.2, margin="0.20,0.13"];
+    edge [fontname="monospace", fontsize=8.5, color="#707070",
+          fontcolor="#404040", arrowsize=0.8];
+
+    // ===== USERSPACE =====
+    subgraph cluster_userspace {
+        label="userspace";
+        labeljust=l; labelloc=t;
+        fontname="monospace"; fontsize=10; fontcolor="#7a7a7a";
+        style="rounded,dashed"; color="#b5b5b5"; penwidth=1.0;
+        margin=18;
+
+        iostream [fillcolor="#ddf3ea", color="#0f6e56", label=
+"C++ iostream   (buffered via a streambuf)\ncout<<   cerr   clog   print/println(ostream)   .write   .put\nsputn   sputc   format_to[_n]   ostream_iterator   osyncstream\nofstream(path) e.g. /dev/stdout            wide: wcout/wcerr/wclog"];
+
+        diag [fillcolor="#faece7", color="#993c1d", label=
+"Diagnostics   (error reporting -> stderr)\nthrow / uncaught     assert     perror\n<err.h>:  err  errx  warn  warnx\n<error.h>:  error  error_at_line"];
+
+        stdio [fillcolor="#ddf3ea", color="#0f6e56", label=
+"C stdio   (buffered via FILE*)\nprintf   fprintf   puts   fputs   print/println\nfwrite   putchar   putc   fputc\n_unlocked family   fopen(path)   wide: wprintf, putwc, ..."];
+
+        otherfd [fillcolor="#e2f0f4", color="#1f6f8b", label=
+"Other fd-based APIs   (no userspace buffer)\ndprintf    aio_write    lio_listio\n(aio: helper thread; pwrite ESPIPE -> write)"];
+
+        writef [fillcolor="#faeeda", color="#854f0b", penwidth=2.4, fontsize=11,
+                label=
+"write()   [libc wrapper]\nthe one fd-level call everything funnels through\nnot the syscall itself -- it emits the 'syscall' instruction"];
+
+        raw [fillcolor="#fbe9d6", color="#a85a12", label=
+"syscall(SYS_write)   /   inline asm\nskip write(), issue the syscall yourself"];
+
+        bypass [fillcolor="#eae8fd", color="#534ab7", label=
+"Bypass write()   (its own syscall)\nwritev    sendfile    splice    io_uring"];
+
+        { rank=same; iostream; diag; }
+        { rank=same; stdio; otherfd; }
+        { rank=same; writef; raw; bypass; }
+    }
+
+    // ===== KERNEL =====
+    subgraph cluster_kernel {
+        label="Linux kernel";
+        labeljust=l; labelloc=t;
+        fontname="monospace"; fontsize=10; fontcolor="#5f5e5a";
+        style="rounded,filled"; fillcolor="#ecebe6"; color="#5f5e5a";
+        penwidth=1.2; margin=16;
+
+        write_k [fillcolor="#d3d1c7", color="#4f4e4a", penwidth=2.0,
+                 fontsize=11, label=
+"write(fd, buf, count)   -- the system call\nnearly every method converges here\ndiffers only by the target fd  (1 stdout, 2 stderr, file, /dev/tty, ...)"];
+
+        other4 [fillcolor="#d7d4e2", color="#534ab7", label=
+"writev    sendfile    splice    io_uring_enter\nthe only 4 that bypass write()"];
+
+        { rank=same; write_k; other4; }
+    }
+
+    // ===== EDGES =====
+    iostream -> stdio  [color="#0f6e56", fontcolor="#0f6e56", penwidth=1.6,
+                        label="  default: via the C stdout buffer  "];
+    iostream -> writef [color="#0f6e56", fontcolor="#3f8f78", penwidth=0.9,
+                        style=dashed,
+                        label="  own buffer -> write()\n  (ofstream / sync_with_stdio false)  "];
+    diag -> stdio      [color="#993c1d", fontcolor="#993c1d", penwidth=1.2];
+
+    stdio   -> writef  [color="#0f6e56", fontcolor="#0f6e56", penwidth=1.6,
+                        label="  flush calls write()  "];
+    otherfd -> writef  [color="#1f6f8b", fontcolor="#1f6f8b", penwidth=1.4,
+                        label="  calls write()  "];
+
+    writef -> write_k  [color="#854f0b", fontcolor="#854f0b", penwidth=2.4,
+                        label="  the 'syscall' instruction  "];
+    raw    -> write_k  [color="#a85a12", fontcolor="#a85a12", penwidth=1.2,
+                        style=dashed, label="  same instruction, skips write()  "];
+    bypass -> other4   [color="#534ab7", fontcolor="#534ab7", penwidth=1.2,
+                        style=dashed, label="  own syscalls  "];
+}

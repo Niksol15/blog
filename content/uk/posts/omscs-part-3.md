@@ -1,5 +1,5 @@
 ---
-title: "OMSCS Частина 3: Перший семестр — організація навчання і AOS"
+title: "OMSCS Частина 3: Перший семестр - організація навчання і AOS"
 date: "2026-01-19"
 description: "Як влаштовано навчання в OMSCS та мій досвід з курсом Advanced Operating Systems"
 tags:

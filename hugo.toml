@@ -46,7 +46,7 @@ enableGitInfo = true
 # Languages
 [languages]
   [languages.en]
-    languageName = "English"
+    label = "English"
     weight = 1
     title = "Nikita Solonko"
     contentDir = "content/en"
@@ -57,7 +57,7 @@ enableGitInfo = true
         Content = "C++ Enthusiast | Tech blog about C++, systems programming and development"
 
   [languages.uk]
-    languageName = "Українська"
+    label = "Українська"
     weight = 2
     title = "Nikita Solonko"
     contentDir = "content/uk"
@@ -69,8 +69,7 @@ enableGitInfo = true
 
 # Site params
 [params]
-  # author is intentionally not set here to hide it from post metadata
-  # (single-author blog, author info is on About page)
+  author = "Nikita Solonko"
   description = "Tech blog about C++, systems programming and development"
   images = ["favicon.svg"]  # Default Open Graph image
 
