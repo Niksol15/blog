@@ -213,7 +213,7 @@ int main()
 
 А це перевантаження приймає `std::ostream&`.
 
-**#11. `std::println(std::ostream&, …)`**
+**#11. `std::println(std::ostream&, …)` - C++23**
 
 ```cpp
 #include <iostream>
@@ -687,7 +687,7 @@ int main()
 }
 ```
 
-Збирає дані з кількох окремих буферів в один **атомарний** системний виклик.
+Збирає дані з кількох окремих буферів в один системний виклик.
 
 **#49. `dprintf()`**
 
@@ -1171,17 +1171,7 @@ error: uncaught exception of type 'std::runtime_error'; 'what()': 'Hello World'
 Фактично, компілятори вже вміють виконувати велику частину C++ коду під час компіляції.
 Невеличке застереження: це поки що вміє лише GCC. Clang 22 ще не реалізував кидання винятків у константних обчисленнях ([P3068](https://wg21.link/p3068)). Він просто відкидає `throw` як неконстантний вираз, не доходячи до `what()`.
 
-**#82. `#pragma message`**
-
-```cpp
-#pragma message("Hello World")
-```
-
-```text
-note: '#pragma message: Hello World'
-```
-
-**#83. `#warning` - C++23**
+**#82. `#warning` - C++23**
 
 ```cpp
 #warning "Hello World"
@@ -1193,7 +1183,7 @@ warning: #warning "Hello World" [-Wcpp]
 
 До C++23 це було розширенням GCC і Clang; тепер це стандарт (P2437R1).
 
-**#84. `#error` - C++98**
+**#83. `#error` - C++98**
 
 ```cpp
 #error "Hello World"
@@ -1205,7 +1195,7 @@ error: #error "Hello World"
 
 Стандартна директива препроцесора з C++98.
 
-**#85. `#include "Hello World"`**
+**#84. `#include "Hello World"`**
 
 ```cpp
 #include "Hello World"
@@ -1219,6 +1209,18 @@ fatal error: Hello World: No such file or directory
 Ще один output як побічний ефект діагностики, тільки тепер від препроцесора. Препроцесор шукає файл із таким іменем, не знаходить і падає з фатальною помилкою. Ім'я в лапках може містити пробіл, тож `"Hello World"` - це цілком легальний хедер. Теж трохи хак, але що поробиш)
 
 ### Компілятор-специфічні
+
+**#85. `#pragma message`**
+
+```cpp
+#pragma message("Hello World")
+```
+
+```text
+note: '#pragma message: Hello World'
+```
+
+На відміну від `#warning` і `#error`, `#pragma message` у стандарті немає. Це розширення, яке підтримують GCC, Clang і MSVC.
 
 **#86. `__attribute__((warning(...)))` - лише GCC**
 
@@ -1330,7 +1332,7 @@ Hello World
 ## Фінал: усі дороги ведуть до `write(2)`
 
 **Загальний підсумок: 92 способи** надрукувати "Hello World\n" у консоль у C++ на Linux.
-З них 53 - стандартний C++.
+З них 54 - стандартний C++.
 
 | Категорія                         | Кількість |
 | --------------------------------- | --------: |
@@ -1338,8 +1340,8 @@ Hello World
 | POSIX (+ glibc unlocked)          |        18 |
 | Розширення (BSD/glibc)            |         6 |
 | Суто Linux                        |         6 |
-| Compile-time (стандартний C++)    |         7 |
-| Compile-time (нестандартні)       |         9 |
+| Compile-time (стандартний C++)    |         8 |
+| Compile-time (нестандартні)       |         8 |
 | **Всього**                        |    **92** |
 
 Врешті, майже всі рантайм методи зводяться до одного системного виклику `write(2)`. І лише чотири мають власний системний виклик: `writev`, `sendfile`, `splice` та `io_uring`.

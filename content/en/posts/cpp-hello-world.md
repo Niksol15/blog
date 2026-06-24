@@ -207,7 +207,7 @@ int main()
 
 And this overload takes a `std::ostream&`.
 
-**#11. `std::println(std::ostream&, …)`**
+**#11. `std::println(std::ostream&, …)` - C++23**
 
 ```cpp
 #include <iostream>
@@ -681,7 +681,7 @@ int main()
 }
 ```
 
-Gathers data from several separate buffers into a single **atomic** system call.
+Gathers data from several separate buffers into a single system call.
 
 **#49. `dprintf()`**
 
@@ -1165,17 +1165,7 @@ error: uncaught exception of type 'std::runtime_error'; 'what()': 'Hello World'
 In fact, compilers can already execute a large portion of C++ code at compile time.
 A small caveat: for now only GCC can do this. Clang 22 hasn't yet implemented throwing exceptions in constant evaluation ([P3068](https://wg21.link/p3068)). It just rejects the `throw` as a non-constant expression, never reaching `what()`.
 
-**#82. `#pragma message`**
-
-```cpp
-#pragma message("Hello World")
-```
-
-```text
-note: '#pragma message: Hello World'
-```
-
-**#83. `#warning` - C++23**
+**#82. `#warning` - C++23**
 
 ```cpp
 #warning "Hello World"
@@ -1187,7 +1177,7 @@ warning: #warning "Hello World" [-Wcpp]
 
 Before C++23 this was a GCC and Clang extension; now it's standard (P2437R1).
 
-**#84. `#error` - C++98**
+**#83. `#error` - C++98**
 
 ```cpp
 #error "Hello World"
@@ -1199,7 +1189,7 @@ error: #error "Hello World"
 
 A standard preprocessor directive from C++98.
 
-**#85. `#include "Hello World"`**
+**#84. `#include "Hello World"`**
 
 ```cpp
 #include "Hello World"
@@ -1213,6 +1203,18 @@ fatal error: Hello World: No such file or directory
 Another case of output as a side effect of diagnostics, only this time from the preprocessor. The preprocessor looks for a file with this name, doesn't find it, and bails out with a fatal error. A quoted name may contain a space, so `"Hello World"` is a perfectly legal header. A bit of a hack too, but oh well)
 
 ### Compiler-specific
+
+**#85. `#pragma message`**
+
+```cpp
+#pragma message("Hello World")
+```
+
+```text
+note: '#pragma message: Hello World'
+```
+
+Unlike `#warning` and `#error`, `#pragma message` isn't in the standard. It's an extension, supported by GCC, Clang, and MSVC.
 
 **#86. `__attribute__((warning(...)))` - GCC only**
 
@@ -1324,7 +1326,7 @@ The assembler, unlike the rest of this section, prints the string to **stdout**,
 ## Finale: all roads lead to `write(2)`
 
 **Grand total: 92 ways** to print "Hello World\n" to the console in C++ on Linux.
-Of those, 53 are standard C++.
+Of those, 54 are standard C++.
 
 | Category                        | Count |
 | ------------------------------- | ----: |
@@ -1332,8 +1334,8 @@ Of those, 53 are standard C++.
 | POSIX (+ glibc unlocked)        |    18 |
 | Extensions (BSD/glibc)          |     6 |
 | Linux-only                      |     6 |
-| Compile-time (standard C++)     |     7 |
-| Compile-time (non-standard)     |     9 |
+| Compile-time (standard C++)     |     8 |
+| Compile-time (non-standard)     |     8 |
 | **Total**                       | **92** |
 
 In the end, almost all the runtime methods boil down to a single system call, `write(2)`. And only four have their own system call: `writev`, `sendfile`, `splice`, and `io_uring`.
