@@ -1,7 +1,7 @@
 ---
 title: "Всі (92) способи надрукувати \"Hello World\" у C++26"
 date: "2026-06-18"
-description: "Всі (92) способи надрукувати \"Hello World\" у C++26"
+description: "Від std::cout до io_uring, inline assembly та compile-time трюків - 92 різні способи надрукувати Hello World у C++26, майже всі з яких зрештою зводяться до одного write(2)."
 tags:
   - C++
   - Linux
