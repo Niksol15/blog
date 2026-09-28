@@ -1,0 +1,20 @@
+{{- /*
+  Greedy word wrap for a monospaced font with advance = 0.6em.
+  Takes dict "text", "size" (px), "width" (px); returns a slice of lines.
+*/ -}}
+{{- $maxChars := div .width (mul .size 0.6) | int }}
+{{- $lines := slice }}
+{{- $line := "" }}
+{{- range split .text " " }}
+  {{- $candidate := cond (eq $line "") . (printf "%s %s" $line .) }}
+  {{- if and (gt (strings.RuneCount $candidate) $maxChars) (ne $line "") }}
+    {{- $lines = $lines | append $line }}
+    {{- $line = . }}
+  {{- else }}
+    {{- $line = $candidate }}
+  {{- end }}
+{{- end }}
+{{- with $line }}
+  {{- $lines = $lines | append . }}
+{{- end }}
+{{- return $lines }}

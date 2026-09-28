@@ -9,12 +9,16 @@
 
 - id: read_time
   translation:
-    one : "1 хвилина"
+    one: "{{ .Count }} хвилина"
+    few: "{{ .Count }} хвилини"
+    many: "{{ .Count }} хвилин"
     other: "{{ .Count }} хвилин"
 
 - id: words
   translation:
-    one : "слово"
+    one: "{{ .Count }} слово"
+    few: "{{ .Count }} слова"
+    many: "{{ .Count }} слів"
     other: "{{ .Count }} слів"
 
 - id: toc

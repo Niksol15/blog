@@ -71,7 +71,6 @@ enableGitInfo = true
 [params]
   author = "Nikita Solonko"
   description = "Tech blog about C++, systems programming and development"
-  images = ["favicon.svg"]  # Default Open Graph image
 
   # PaperMod specific settings
   env = "production"
@@ -96,9 +95,10 @@ enableGitInfo = true
   # Favicon configuration
   [params.assets]
     favicon = "favicon.svg"
-    favicon16x16 = "favicon.svg"
-    favicon32x32 = "favicon.svg"
-    apple_touch_icon = "favicon.svg"
+    favicon16x16 = "favicon-16x16.png"
+    favicon32x32 = "favicon-32x32.png"
+    apple_touch_icon = "apple-touch-icon.png"
+    safari_pinned_tab = "favicon.svg"
 
   # PaperMod profile mode for homepage
   [params.profileMode]

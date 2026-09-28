@@ -11,11 +11,12 @@ A bilingual technical blog about C++, systems programming, and software developm
 - **Reading Experience** - Reading time, table of contents, syntax highlighting with copy button, breadcrumbs, post navigation
 - **Social Sharing** - Twitter/X, LinkedIn, Telegram
 - **SEO Optimized** - JSON-LD structured data, Open Graph, Twitter Cards
+- **Link Previews** - A 1200x630 card with the title and tags is generated for every page
 - **RSS Feeds** - Per-language feeds (`/en/feed.xml`, `/uk/feed.xml`)
 
 ## Prerequisites
 
-- [Hugo Extended](https://gohugo.io/installation/) v0.139.0 or later
+- [Hugo Extended](https://gohugo.io/installation/) v0.146.0 or later (CI uses v0.162.1)
 - [Go](https://go.dev/doc/install) (for Hugo modules)
 - Git
 
@@ -28,8 +29,18 @@ hugo mod get -u
 # Run dev server (includes drafts)
 hugo server -D
 
-# Build for production
-hugo --gc --minify
+# Build for production (same as CI)
+scripts/build.sh https://niksol15.github.io/blog/
+```
+
+### Staging
+
+`scripts/staging.sh` builds the git index (what the next commit contains, without untracked drafts) exactly like CI and serves it like GitHub Pages at <http://localhost:1313/blog/>. While it runs, `scripts/check-site.py` crawls it: internal links and assets, Open Graph images, JSON-LD, the 404 page.
+
+```bash
+git add <files to commit>
+scripts/staging.sh       # terminal 1
+scripts/check-site.py    # terminal 2
 ```
 
 ## Project Structure
@@ -38,7 +49,9 @@ hugo --gc --minify
 .
 ├── content/en/          # English content
 ├── content/uk/          # Ukrainian content
+├── assets/og/           # Open Graph card background and font
 ├── layouts/partials/    # Custom partials
+├── scripts/             # Build, staging and site checks
 ├── static/              # Static assets
 └── hugo.toml            # Configuration
 ```

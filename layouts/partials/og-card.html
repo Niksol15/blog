@@ -1,0 +1,75 @@
+{{- /*
+  Generates a 1200x630 Open Graph card for a page: site name on top,
+  page title in the middle, tags and host at the bottom.
+  JetBrains Mono is monospaced (advance = 0.6em), so text is wrapped
+  and aligned by character count.
+*/ -}}
+{{- $base := resources.Get "og/base.png" }}
+{{- $bold := resources.Get "og/JetBrainsMono-Bold.ttf" }}
+{{- $regular := resources.Get "og/JetBrainsMono-Regular.ttf" }}
+
+{{- $left := 80 }}
+{{- $right := 1120 }}
+{{- $width := sub $right $left }}
+{{- $muted := "#9a9ba0" }}
+{{- $accent := "#5c9cf5" }}
+{{- $filters := slice }}
+
+{{- /* Header: site name, omitted on the home page where it is the title. */ -}}
+{{- if not .IsHome }}
+  {{- $filters = $filters | append (images.Text site.Title (dict "font" $regular "size" 30 "color" $muted "x" $left "y" 60)) }}
+{{- end }}
+
+{{- /* Title block: the largest size that fits in 3 lines, centered between header and footer. */ -}}
+{{- $title := .Title | plainify | htmlUnescape }}
+{{- $subtitle := cond .IsHome site.Params.description "" }}
+{{- $titleSize := 0 }}
+{{- $titleLines := slice }}
+{{- range slice 72 60 50 }}
+  {{- $titleSize = . }}
+  {{- $titleLines = partial "og-wrap.html" (dict "text" $title "size" . "width" $width) }}
+  {{- if le (len $titleLines) 3 }}
+    {{- break }}
+  {{- end }}
+{{- end }}
+{{- $titleStep := mul $titleSize 1.25 }}
+{{- $subtitleSize := 32 }}
+{{- $subtitleStep := mul $subtitleSize 1.4 }}
+{{- $subtitleLines := slice }}
+{{- with $subtitle }}
+  {{- $subtitleLines = partial "og-wrap.html" (dict "text" . "size" $subtitleSize "width" $width) }}
+{{- end }}
+{{- $blockHeight := add (mul (len $titleLines) $titleStep) (mul (len $subtitleLines) $subtitleStep) }}
+{{- if $subtitleLines }}
+  {{- $blockHeight = add $blockHeight 24 }}
+{{- end }}
+{{- $y := add 110 (div (sub 370 $blockHeight) 2) }}
+{{- range $titleLines }}
+  {{- $filters = $filters | append (images.Text . (dict "font" $bold "size" $titleSize "color" "#ffffff" "x" $left "y" (int $y))) }}
+  {{- $y = add $y $titleStep }}
+{{- end }}
+{{- $y = add $y 24 }}
+{{- range $subtitleLines }}
+  {{- $filters = $filters | append (images.Text . (dict "font" $regular "size" $subtitleSize "color" $muted "x" $left "y" (int $y))) }}
+  {{- $y = add $y $subtitleStep }}
+{{- end }}
+
+{{- /* Footer: host on the right, as many tags as fit on the left. */ -}}
+{{- $metaSize := 28 }}
+{{- $charWidth := mul $metaSize 0.6 }}
+{{- $host := strings.TrimSuffix "/" (replaceRE `^https?://` "" site.BaseURL) }}
+{{- $hostX := sub $right (mul (strings.RuneCount $host) $charWidth) | int }}
+{{- $filters = $filters | append (images.Text $host (dict "font" $regular "size" $metaSize "color" $muted "x" $hostX "y" 530)) }}
+{{- $tags := "" }}
+{{- $maxTagChars := div (sub (sub $hostX $left) 40) $charWidth | int }}
+{{- range .Params.tags }}
+  {{- $next := cond (eq $tags "") . (printf "%s · %s" $tags .) }}
+  {{- if le (strings.RuneCount $next) $maxTagChars }}
+    {{- $tags = $next }}
+  {{- end }}
+{{- end }}
+{{- with $tags }}
+  {{- $filters = $filters | append (images.Text . (dict "font" $regular "size" $metaSize "color" $accent "x" $left "y" 530)) }}
+{{- end }}
+
+{{- return images.Filter $filters $base }}

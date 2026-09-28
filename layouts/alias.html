@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang }}">
+  <head>
+    <title>{{ .Permalink }}</title>
+    <link rel="canonical" href="{{ .Permalink }}">
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
+    {{- /* Link preview bots don't follow the refresh, so give them the target's card. */}}
+    {{- with .Page }}
+    {{- partial "templates/opengraph.html" . }}
+    {{- partial "templates/twitter_cards.html" . }}
+    {{- end }}
+  </head>
+</html>

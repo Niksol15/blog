@@ -2,7 +2,7 @@
 title: "Магістратура ТОП-10 вишу США за 7k доларів (частина 2)"
 date: 2025-12-26
 description: "Мій досвід вступу в OMSCS: IELTS, документи, рекомендаційні листи"
-tags: ["OMSCS", "Georgia Tech", "Computer Science", "Освіта", "Mагістратура"]
+tags: ["OMSCS", "Georgia Tech", "Computer Science", "Освіта", "Магістратура"]
 categories: ["Освіта"]
 series: ["OMSCS"]
 ---
