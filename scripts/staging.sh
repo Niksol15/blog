@@ -22,7 +22,7 @@ fi
     scripts/build.sh "http://localhost:$port/blog/" "$snap/site/blog")
 
 echo "Staging: http://localhost:$port/blog/"
-python3 - "$port" "$snap/site" <<'EOF'
+python3 - "$port" "$snap/site" <<'EOF' &
 import functools, http.server, os, sys
 
 port, site = int(sys.argv[1]), sys.argv[2]
@@ -43,3 +43,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 handler = functools.partial(Handler, directory=site)
 http.server.ThreadingHTTPServer(("127.0.0.1", port), handler).serve_forever()
 EOF
+server=$!
+trap 'kill "$server" 2>/dev/null; rm -rf "$snap"' EXIT
+wait "$server"
