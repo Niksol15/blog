@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Builds the git index (exactly what the next commit contains, without
 # untracked drafts) the same way CI does, and serves it like GitHub Pages:
-# under /blog/, with /blog/404.html for missing paths.
+# at the root, with /404.html for missing paths.
 # Usage: scripts/staging.sh [PORT]    (default 1313)
 set -euo pipefail
 
@@ -19,9 +19,9 @@ if [[ -d "$root/_vendor" ]]; then
 fi
 
 (cd "$snap/src" && HUGO_ENVIRONMENT=production TZ=Europe/Kyiv \
-    scripts/build.sh "http://localhost:$port/blog/" "$snap/site/blog")
+    scripts/build.sh "http://localhost:$port/" "$snap/site")
 
-echo "Staging: http://localhost:$port/blog/"
+echo "Staging: http://localhost:$port/"
 python3 - "$port" "$snap/site" <<'EOF' &
 import functools, http.server, os, sys
 
@@ -29,7 +29,7 @@ port, site = int(sys.argv[1]), sys.argv[2]
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def send_error(self, code, message=None, explain=None):
-        page = os.path.join(site, "blog", "404.html")
+        page = os.path.join(site, "404.html")
         if code != 404 or not os.path.exists(page):
             return super().send_error(code, message, explain)
         body = open(page, "rb").read()

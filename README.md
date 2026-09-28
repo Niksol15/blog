@@ -30,12 +30,12 @@ hugo mod get -u
 hugo server -D
 
 # Build for production (same as CI)
-scripts/build.sh https://niksol15.github.io/blog/
+scripts/build.sh https://nikitasolonko.dev/
 ```
 
 ### Staging
 
-`scripts/staging.sh` builds the git index (what the next commit contains, without untracked drafts) exactly like CI and serves it like GitHub Pages at <http://localhost:1313/blog/>. While it runs, `scripts/check-site.py` crawls it: internal links and assets, Open Graph images, JSON-LD, the 404 page.
+`scripts/staging.sh` builds the git index (what the next commit contains, without untracked drafts) exactly like CI and serves it like GitHub Pages at <http://localhost:1313/>. While it runs, `scripts/check-site.py` crawls it: internal links and assets, Open Graph images, JSON-LD, the 404 page.
 
 ```bash
 git add <files to commit>
@@ -72,8 +72,8 @@ Edit [hugo.toml](hugo.toml) for settings (social links, comments, features).
 
 ## Deployment
 
-Auto-deploys to <https://niksol15.github.io/blog/> on push to `master` via [GitHub Actions](.github/workflows/hugo.yml).
+Auto-deploys to <https://nikitasolonko.dev/> on push to `master` via [GitHub Actions](.github/workflows/hugo.yml).
 
 ---
 
-Built with [Hugo](https://gohugo.io/) and [PaperMod](https://github.com/adityatelange/hugo-PaperMod) • [Live Site](https://niksol15.github.io/blog/)
+Built with [Hugo](https://gohugo.io/) and [PaperMod](https://github.com/adityatelange/hugo-PaperMod) • [Live Site](https://nikitasolonko.dev/)

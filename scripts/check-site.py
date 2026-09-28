@@ -4,7 +4,7 @@ sitemap.xml, and checks what a visitor or a link preview would hit: every
 internal link and asset answers 200, every page has a 1200x630 og:image,
 JSON-LD parses, and a missing path gets the 404 page.
 
-Usage: scripts/check-site.py [BASE_URL]    (default http://localhost:1313/blog/)
+Usage: scripts/check-site.py [BASE_URL]    (default http://localhost:1313/)
 """
 import html
 import json
@@ -16,7 +16,7 @@ import urllib.request
 from html.parser import HTMLParser
 from urllib.parse import urldefrag, urljoin
 
-BASE = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:1313/blog/"
+BASE = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:1313/"
 
 
 class Page(HTMLParser):

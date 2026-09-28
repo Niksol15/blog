@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Render the "all roads lead to write()" funnel diagram from diagram.dot.
 # Output goes to the site's assets/ tree so Hugo's image render hook resolves it
-# (and prefixes the baseURL subpath, e.g. /blog/images/...).
+# (and prefixes the baseURL, if it ever has a subpath).
 #
 #   ./build-diagram.sh         # render the SVG used by the article
 #   ./build-diagram.sh png     # also drop a white-background PNG for previewing
